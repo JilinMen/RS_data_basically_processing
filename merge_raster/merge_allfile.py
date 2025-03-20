@@ -60,7 +60,7 @@ def merge_raster_images_tiff(fnames,outname):
         fmodels.append(src)
 
     # Merge function returns a single mosaic array and the transformation info
-    mosaic, out_trans = merge(fmodels,method=copy_mean)
+    mosaic, out_trans = merge(fmodels,method=copy_mean) #"max","min"
 
     # Copy the metadata
     out_meta = src.meta.copy()
