@@ -31,11 +31,11 @@ def copy_frequence(merged_data, new_data, merged_mask, new_mask, **kwargs):
     mask_merged_zero = merged_data==0.0
     mask_new_zero = new_data==0.0
     np.logical_or(mask_new_zero, new_mask, out=new_mask) 
-    '''将new_data 的有效像元标记为1'''
+    '''mark valid data in new_data as 1'''
     new_data.data[new_data.data>0] = 1
     new_data.data[new_data.data<0] = 1
     # np.logical_not(new_mask, out=new_data.data)
-    '''求merged_data和new_data重叠部分'''
+    '''find the overlap areas between merged_data and new_data'''
     np.logical_or(mask_merged_zero, merged_mask, out=merged_mask) 
     np.logical_or(merged_mask, new_mask, out=mask)
     np.logical_not(mask, out=mask)
